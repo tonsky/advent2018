@@ -5,3 +5,16 @@
     [clojure.walk :as walk]))
 
 (def input (slurp "inputs/stub"))
+(def lines (str/split input #"\n"))
+
+
+(defn part1 []
+  )
+
+#_(part1)
+
+
+(defn part2 []
+)
+
+#_(part2)
