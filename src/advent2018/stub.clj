@@ -2,11 +2,11 @@
   (:require
     [clojure.string :as str]
     [clojure.set :as set]
-    [clojure.walk :as walk]))
+    [clojure.walk :as walk]
+    [advent2018.core :refer :all]))
 
 (def input (slurp "inputs/stub"))
 (def lines (str/split input #"\n"))
-
 
 (defn part1 []
   )
