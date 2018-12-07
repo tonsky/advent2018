@@ -11,10 +11,10 @@
 (defn part1 []
   )
 
-#_(part1)
+#_(time (part1))
 
 
 (defn part2 []
 )
 
-#_(part2)
+#_(time (part2))
