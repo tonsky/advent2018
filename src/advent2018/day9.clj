@@ -44,25 +44,21 @@
        (cons *n)
        (mapv list-peek)))
 
-(defn part1
-  ([] (part1 410 72059))
-  ([players marbles]
-   (loop [marble  1
-          *circle (list-create 0)
-          scores  {}]
-     (if (> marble marbles)
-       (->> scores (map second) (reduce max))
-       (if (zero? (mod marble 23))
-         (let [*circle' (nth (iterate list-prev *circle) 7)
-               removed-marble (list-peek *circle')]
-           (recur (inc marble)
-                  (list-pop *circle')
-                  (update scores (mod marble players) #(+ (or % 0) marble removed-marble))))
-         (let [*circle' (-> *circle list-next (list-add marble))]
-           (recur (inc marble)
-                  *circle'
-                  scores)))))))
-            
+(defn part1 [players marbles]
+  (loop [marble  1
+         *circle (list-create 0)
+         scores  {}]
+    (if (> marble marbles)
+      (reduce max (vals scores))
+      (if (zero? (mod marble 23))
+        (let [*circle' (nth (iterate list-prev *circle) 7)
+              removed-marble (list-peek *circle')]
+          (recur (inc marble)
+                 (list-pop *circle')
+                 (update scores (mod marble players) #(+ (or % 0) marble removed-marble))))
+        (recur (inc marble)
+               (-> *circle list-next (list-add marble))
+               scores)))))
 
 #_(time (part1 9 25)) ; => 32
 #_(time (part1 10 1618)) ; => 8317
