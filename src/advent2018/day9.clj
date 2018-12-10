@@ -52,10 +52,10 @@
       (reduce max (vals scores))
       (if (zero? (mod marble 23))
         (let [*circle' (nth (iterate list-prev *circle) 7)
-              removed-marble (list-peek *circle')]
+              removed  (list-peek *circle')]
           (recur (inc marble)
                  (list-pop *circle')
-                 (update scores (mod marble players) #(+ (or % 0) marble removed-marble))))
+                 (update scores (mod marble players) (fnil + 0) marble removed)))
         (recur (inc marble)
                (-> *circle list-next (list-add marble))
                scores)))))
