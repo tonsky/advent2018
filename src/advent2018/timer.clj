@@ -13,5 +13,5 @@
             msecs   (mod passed 1000)]
         (print (format "%d:%02d.%03d" mins secs msecs)))
       (flush)
-      (Thread/sleep 100)
+      (Thread/sleep 277)
       (recur))))

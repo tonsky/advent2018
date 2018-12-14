@@ -1,0 +1,2 @@
+{:bind       "::"
+ :middleware [cider.nrepl/cider-middleware]}
